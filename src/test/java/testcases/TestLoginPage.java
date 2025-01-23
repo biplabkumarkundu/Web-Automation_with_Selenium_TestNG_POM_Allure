@@ -49,6 +49,7 @@ public class TestLoginPage extends DriverSetup {
 
        // Assert.assertTrue(homePage.is_element_visible(homePage.login_btn));
        // Assert.assertTrue(accountPage.is_element_visible(accountPage.account_btn));
+    // Assert.assertTrue(accountPage.is_element_visible(accountPage.account_btn));
 }
 
 }
