@@ -1,10 +1,7 @@
 package pages;
 
 import io.qameta.allure.Allure;
-import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 
 import java.io.ByteArrayInputStream;
 
@@ -12,33 +9,43 @@ import static utilities.DriverSetup.getDriver;
 
 public class BasePage {
     public WebElement getElement(By locator){
+
         return getDriver().findElement(locator);
     }
-
+    public void getAttribute(By locator,String value){
+         getElement(locator).getAttribute(value);
+    }
     public void clickOnElement(By locator){
+
         getElement(locator).click();
     }
 
     public void writeOnElement(By locator, String text){
+
         getElement(locator).sendKeys(text);
     }
 
     public void loadAnWebPage(String url){
+
         getDriver().get(url);
     }
 
     public String getPageTitle(){
+
         return getDriver().getTitle();
     }
 
     public void loadAWebPage(String url){
+
         getDriver().get(url);
     }
     public String getLoadedPageUrl(){
+
         return getDriver().getCurrentUrl();
     }
 
     public String getLoadedPageTitle(){
+
         return getDriver().getTitle();
     }
 

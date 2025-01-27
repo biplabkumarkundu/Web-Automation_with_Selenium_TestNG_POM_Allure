@@ -22,13 +22,14 @@ public class DriverSetup {
     }
 
     public static WebDriver getDriver(){
+
         return LOCAL_DRIVER.get();
     }
 
     @BeforeMethod
     public void openABrowser(){
         WebDriver driver = getBrowser(browser_name);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         setDriver(driver);
     }

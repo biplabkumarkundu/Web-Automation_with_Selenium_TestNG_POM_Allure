@@ -10,6 +10,10 @@ public class LoginPage extends BasePage{
 
     public  By login_btn = By.xpath("//div[@class='iweb-button-mask']");
 
+    public  By login_btn2 = By.xpath("//div[@class='iweb-button-mask']");
+
+    public By toast_message=By.className("iweb-toast-wrap");
+
     public  By error_msg = By.xpath("//div[@id='fb-root']");
 
     public By error_required_email=By.xpath("//div[contains(@class,'index_module_loginFromWrapper__deb6dcb9')]//div[4]");
