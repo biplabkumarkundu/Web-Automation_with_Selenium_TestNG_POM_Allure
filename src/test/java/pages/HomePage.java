@@ -4,16 +4,21 @@ import org.openqa.selenium.By;
 
 public class HomePage extends BasePage{
 
-    public String url = "https://www.daraz.com.bd/";
+    public String url = "https://www.applegadgetsbd.com/";
 
-    public String title = "Online Shopping in Bangladesh: Order Now from Daraz.com.bd";
+    public String title = "Smartphones, Gadgets & Premium Accessories | Apple Gadgets";
 
-    public By login_btn = By.xpath("//a[normalize-space()='Login']");
+    public By acount_btn = By.xpath("//p[normalize-space()='Account']");
 
-    public By signup_btn=By.xpath("//a[normalize-space()='Sign Up']");
+    public By registrOrLogin_btn=By.xpath("//p[normalize-space()='Register or Login']");
+
+    public By aftarLogin=By.xpath("//p[normalize-space()='Biplab Kumar']");
 
     public void loadHomePage(){
+
         loadAWebPage(url);
+
+
     }
 
 

@@ -1,6 +1,6 @@
 package pages;
 
-import io.qameta.allure.Allure;
+
 import org.openqa.selenium.*;
 
 import java.io.ByteArrayInputStream;
@@ -13,7 +13,8 @@ public class BasePage {
         return getDriver().findElement(locator);
     }
     public void getAttribute(By locator,String value){
-         getElement(locator).getAttribute(value);
+
+        getElement(locator).getAttribute(value);
     }
     public void clickOnElement(By locator){
 
@@ -52,14 +53,15 @@ public class BasePage {
     public Boolean is_element_visible(By locator){
         try {
             return getElement(locator).isDisplayed();
-        }catch (Exception e){
+        }
+        catch (Exception e){
             return false;
         }
     }
 
-    public void addScreenshot(String name){
-       Allure.addAttachment(name, new ByteArrayInputStream (((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.BYTES)));
-    }
+//    public void addScreenshot(String name){
+//       Allure.addAttachment(name, new ByteArrayInputStream (((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.BYTES)));
+//    }
 
 
 }

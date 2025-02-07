@@ -1,8 +1,6 @@
 package testcases;
 
-import io.qameta.allure.Allure;
-import io.qameta.allure.Description;
-import io.qameta.allure.internal.shadowed.jackson.annotation.JsonTypeInfo;
+
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -43,30 +41,40 @@ public class TestLoginPage extends DriverSetup {
 
 
 @Test
-    public void testLoginWithValidCredentials(){
-        loginPage.writeOnElement(loginPage.email_input_box,"01821594858");
-        loginPage.writeOnElement(loginPage.password_input_box,"B!plab594858");
+    public void testLoginWithValidCredentials() throws InterruptedException {
+
+        loginPage.writeOnElement(loginPage.email_input_box,"biplabkundu101@gmail.com");
+        loginPage.writeOnElement(loginPage.password_input_box,"bk123456");
         loginPage.clickOnElement(loginPage.login_btn);
-        loginPage.clickOnElement(loginPage.login_btn2);
+        Assert.assertEquals(homePage.getElement(homePage.aftarLogin).getText(),"Biplab Kumar");
+        homePage.clickOnElement(homePage.acount_btn);
+        Assert.assertTrue(accountPage.is_element_visible(accountPage.logoutButton));
+        Assert.assertTrue(accountPage.is_element_visible(accountPage.myOrderButton));
+        Assert.assertEquals(accountPage.getElement(accountPage.logoutButton).getText(),"Logout");
+        Assert.assertEquals(accountPage.getElement(accountPage.myOrderButton).getText(),"My Orders");
+        Assert.assertFalse(homePage.is_element_visible(homePage.registrOrLogin_btn));
+     //   Assert.assertEquals(homePage.getElement(homePage.registrOrLogin_btn).getText(),"Biplab Kumar");
 
-       // accountPage.clickOnElement(accountPage.account_btn);
-    System.out.println(loginPage.getElement(loginPage.login_btn2).getAttribute("class"));
-    Assert.assertEquals(loginPage.getElement(loginPage.login_btn2).getAttribute("class"),"iweb-button-mask");
-
-       // Assert.assertTrue(homePage.is_element_visible(homePage.login_btn));
-       // Assert.assertTrue(accountPage.is_element_visible(accountPage.account_btn));
-    // Assert.assertTrue(accountPage.is_element_visible(accountPage.account_btn));
 }
 @Test
-    public void testLoginWithInvalidEmailAndPassword(){
-    loginPage.writeOnElement(loginPage.email_input_box,"0182159485");
-    loginPage.writeOnElement(loginPage.password_input_box,"B!plab59485");
+public void testLoginWithInvalidEmailandPassword(){
+    loginPage.writeOnElement(loginPage.email_input_box,"iplabkundu101@gmail.com");
+    loginPage.writeOnElement(loginPage.password_input_box,"k123456");
     loginPage.clickOnElement(loginPage.login_btn);
+    Assert.assertEquals(loginPage.getElement(loginPage.toastMessage).getText(),"wrong credentials");
     Assert.assertTrue(loginPage.is_element_visible(loginPage.login_btn));
-    //System.out.println(loginPage.is_element_visible(loginPage.login_btn));
-    Assert.assertEquals(loginPage.getElement(loginPage.toast_message).getText(),"Please enter a valid phone number.");
-    //System.out.println(loginPage.getElement(loginPage.toast_message).getText());
+    //System.out.println(loginPage.getElement(loginPage.toastMessage).getText());
 
 }
+    @Test
+    public void testLoginWithValidEmailandInvalidPassword(){
+        loginPage.writeOnElement(loginPage.email_input_box,"biplabkundu101@gmail.com");
+        loginPage.writeOnElement(loginPage.password_input_box,"bk12345");
+        loginPage.clickOnElement(loginPage.login_btn);
+        Assert.assertTrue(loginPage.is_element_visible(loginPage.login_btn));
+        Assert.assertEquals(loginPage.getElement(loginPage.toastMessage).getText(),"wrong credentials");
+       // Assert.assertEquals(loginPage.getElement(loginPage.toastMessage).getText(),"Login was unsuccessful. Please correct the errors and try again.\nThe credentials provided are incorrect");
+       // Assert.assertEquals(loginPage.getElement(loginPage.error_msg).getAttribute("class"),"required-red mb-5 text-center login-error-list-style validation-summary-errors");
+    }
 
 }

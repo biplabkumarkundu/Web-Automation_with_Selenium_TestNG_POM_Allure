@@ -32,6 +32,7 @@ public class DriverSetup {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         setDriver(driver);
+        getDriver().navigate().refresh();
     }
 
     @AfterMethod

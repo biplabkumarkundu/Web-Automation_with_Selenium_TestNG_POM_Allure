@@ -2,32 +2,29 @@ package pages;
 
 import org.openqa.selenium.By;
 
+import static utilities.DriverSetup.getDriver;
+
 public class LoginPage extends BasePage{
 
-    public  By email_input_box = By.xpath("//input[@placeholder='Please enter your Phone Number or Email']");
+    public  By email_input_box = By.xpath("//input[@id='loginEmail']");
 
-    public  By password_input_box = By.xpath("//input[@placeholder='Please enter your password']");
+    public  By password_input_box = By.xpath("//input[@id='loginPassword']");
 
-    public  By login_btn = By.xpath("//div[@class='iweb-button-mask']");
+    public  By login_btn = By.xpath("//button[@type='submit'][normalize-space()='Log in']");
 
-    public  By login_btn2 = By.xpath("//div[@class='iweb-button-mask']");
+    public By toastMessage=By.xpath("//div[contains(text(),'wrong credentials')]");
 
-    public By toast_message=By.className("iweb-toast-wrap");
 
-    public  By error_msg = By.xpath("//div[@id='fb-root']");
 
-    public By error_required_email=By.xpath("//div[contains(@class,'index_module_loginFromWrapper__deb6dcb9')]//div[4]");
 
-    public By error_required_password=By.xpath("//div[contains(@class,'index_module_loginFromWrapper__deb6dcb9')]//div[4]");
-
-    public By close_btn=By.xpath("//div[contains(@class,'iweb-dialog-container-enter')]//div[contains(@class,'lzd-member-loginsign-popup-close-button')]//div//*[name()='svg']");
 
 
 
     public void navigateToLoginPage(){
         HomePage homePage = new HomePage();
         homePage.loadHomePage();
-        homePage.clickOnElement(homePage.login_btn);
+        getDriver().navigate().refresh();
+        homePage.clickOnElement(homePage.registrOrLogin_btn);
     }
 
 }
